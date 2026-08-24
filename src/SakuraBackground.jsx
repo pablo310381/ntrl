@@ -1,18 +1,18 @@
 import React, { useMemo } from 'react';
 import './styles.css';
+import bgImage from './photo_2026-06-24_21-35-36.jpg';
 
 const SakuraBackground = ({ children }) => {
   const petalCount = 42;
 
-  // Генерация лепестков с разной глубиной резкости, скоростью и 3D-вращением
   const petals = useMemo(() => {
     return Array.from({ length: petalCount }).map((_, i) => {
-      const depth = Math.random(); // 0 (далеко) — 1 (вблизи)
-      const size = 12 + depth * 14; // от 12px до 26px
-      const fallDuration = 7 + (1 - depth) * 6; // Дальние падают медленнее
+      const depth = Math.random();
+      const size = 12 + depth * 14;
+      const fallDuration = 7 + (1 - depth) * 6;
       const swayDuration = 2.4 + Math.random() * 2;
       const rollDuration = 2 + Math.random() * 3;
-      const delay = -(Math.random() * 12); // Старт сразу на экране
+      const delay = -(Math.random() * 12);
       const left = Math.random() * 100;
       const blur = depth < 0.25 ? '1.8px' : depth > 0.85 ? '0.8px' : '0px';
 
@@ -34,7 +34,13 @@ const SakuraBackground = ({ children }) => {
 
   return (
     <div className="background-container">
-      {/* Слой с 3D сакурой */}
+      {/* Слой фона с импортированным изображением */}
+      <div
+        className="bg-image-layer"
+        style={{ backgroundImage: `url(${bgImage})` }}
+      />
+
+      {/* 3D-пространство лепестков */}
       <div className="sakura-viewport">
         {petals.map((petal) => (
           <div
@@ -57,7 +63,6 @@ const SakuraBackground = ({ children }) => {
                 animationDelay: petal.delay,
               }}
             >
-              {/* Реалистичная форма лепестка с вырезом и градиентом */}
               <svg
                 className="petal-3d-tumble"
                 viewBox="0 0 30 30"
