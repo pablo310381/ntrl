@@ -1,0 +1,110 @@
+.background-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #08080c;
+}
+
+/* Размытый фон */
+.background-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('./photo_2026-06-24_21-35-36.jpg');
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  filter: blur(6px) brightness(0.85);
+  transform: scale(1.06);
+  z-index: 1;
+}
+
+/* 3D-пространство для лепестков */
+.sakura-viewport {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  perspective: 900px;
+  overflow: hidden;
+  z-index: 2;
+}
+
+/* 1. Вертикальное падение */
+.petal-fall-track {
+  position: absolute;
+  top: -60px;
+  will-change: transform;
+  animation-name: realisticFall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* 2. Колебания ветра по горизонтали */
+.petal-wind-sway {
+  will-change: transform;
+  animation-name: realisticSway;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+/* 3. Вращение в 3D по осям X, Y, Z */
+.petal-3d-tumble {
+  display: block;
+  transform-style: preserve-3d;
+  will-change: transform;
+  animation-name: realisticTumble;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.35));
+}
+
+/* Анимация плавного падения вниз */
+@keyframes realisticFall {
+  0% {
+    top: -60px;
+  }
+  100% {
+    top: 106vh;
+  }
+}
+
+/* Анимация порывов ветра влево-вправо */
+@keyframes realisticSway {
+  0% {
+    transform: translateX(-25px);
+  }
+  50% {
+    transform: translateX(35px);
+  }
+  100% {
+    transform: translateX(-15px);
+  }
+}
+
+/* Кувыркание лепестка в воздухе в 3 плоскостях */
+@keyframes realisticTumble {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  33% {
+    transform: rotateX(120deg) rotateY(60deg) rotateZ(45deg);
+  }
+  66% {
+    transform: rotateX(240deg) rotateY(180deg) rotateZ(90deg);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(180deg);
+  }
+}
+
+/* Контент поверх */
+.content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

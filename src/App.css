@@ -1,0 +1,422 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;1,500&display=swap');
+
+/* Корневая карточка с многослойным стеклом */
+.neo-card {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  width: 92%;
+  max-width: 580px;
+  max-height: 88vh;
+  overflow-y: overlay;
+  margin: auto;
+  padding: 36px 26px;
+  background: linear-gradient(145deg, rgba(16, 16, 22, 0.88), rgba(8, 8, 12, 0.94));
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 32px;
+  box-shadow: 
+    0 30px 60px -12px rgba(0, 0, 0, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 0 40px -10px rgba(255, 117, 140, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  color: #ededed;
+}
+
+/* Кастомный неоновый скролл */
+.neo-card::-webkit-scrollbar {
+  width: 5px;
+}
+.neo-card::-webkit-scrollbar-track {
+  background: transparent;
+}
+.neo-card::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #ff758c, #ff7eb3);
+  border-radius: 10px;
+}
+
+/* Шапка с градиентным аватаром */
+.header-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.avatar-wrapper {
+  position: relative;
+  width: 86px;
+  height: 86px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-ring {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff758c, #2aabee, #ff7eb3);
+  animation: spin 8s linear infinite;
+  filter: blur(2px);
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+.avatar-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #111118;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  z-index: 1;
+}
+
+.status-dot {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 14px;
+  height: 14px;
+  background: #00ff88;
+  border: 3px solid #111118;
+  border-radius: 50%;
+  z-index: 2;
+  box-shadow: 0 0 10px #00ff88;
+}
+
+.brand-name {
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin: 4px 0 0;
+  background: linear-gradient(135deg, #ffffff 40%, #ffb7c5 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-tag {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+/* Неоновая кнопка Telegram */
+.neon-tg-btn {
+  position: relative;
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 28px;
+  background: linear-gradient(135deg, #2aabee, #0088cc);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: 16px;
+  text-decoration: none;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(42, 171, 238, 0.35);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.neon-tg-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(42, 171, 238, 0.6);
+}
+
+/* Стеклянные секции */
+.glass-section {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  padding: 20px 22px;
+  position: relative;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.section-title h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.header-icon {
+  color: #ff758c;
+  font-size: 1.1rem;
+}
+
+.neon-bullet {
+  width: 7px;
+  height: 7px;
+  background: #ff758c;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ff758c;
+}
+
+/* Сетка соцсетей с эффектом блика */
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.social-pill {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+  color: #fff;
+  text-decoration: none;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.shine-fx {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transform: skewX(-25deg);
+  transition: 0.6s;
+}
+
+.social-pill:hover .shine-fx {
+  left: 200%;
+}
+
+.social-pill:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.social-icon {
+  font-size: 1.4rem;
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.social-pill:hover .social-icon {
+  transform: scale(1.2) rotate(6deg);
+}
+
+.social-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.social-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.social-badge {
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* Брендовые подсветки */
+.social-tg:hover { background: rgba(42, 171, 238, 0.16); border-color: #2aabee; box-shadow: 0 8px 24px rgba(42, 171, 238, 0.3); color: #2aabee; }
+.social-spotify:hover { background: rgba(29, 185, 84, 0.16); border-color: #1db954; box-shadow: 0 8px 24px rgba(29, 185, 84, 0.3); color: #1db954; }
+.social-tiktok:hover { background: rgba(254, 44, 85, 0.16); border-color: #fe2c55; box-shadow: 0 8px 24px rgba(254, 44, 85, 0.3); color: #fe2c55; }
+.social-instagram:hover { background: rgba(225, 48, 108, 0.16); border-color: #e1306c; box-shadow: 0 8px 24px rgba(225, 48, 108, 0.3); color: #e1306c; }
+.social-steam:hover { background: rgba(102, 192, 244, 0.16); border-color: #66c0f4; box-shadow: 0 8px 24px rgba(102, 192, 244, 0.3); color: #66c0f4; }
+.social-info:hover { background: rgba(255, 117, 140, 0.16); border-color: #ff758c; box-shadow: 0 8px 24px rgba(255, 117, 140, 0.3); color: #ff758c; }
+
+/* Факты */
+.facts-deck {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fact-item {
+  position: relative;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 12px 16px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.25s ease;
+}
+
+.fact-accent {
+  width: 4px;
+  height: 70%;
+  background: linear-gradient(to bottom, #ff758c, #ff7eb3);
+  border-radius: 4px;
+  box-shadow: 0 0 8px #ff758c;
+  flex-shrink: 0;
+}
+
+.fact-item p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: #dedede;
+}
+
+.fact-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateX(4px);
+}
+
+.hint-label {
+  display: block;
+  margin-top: 12px;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.35);
+  font-style: italic;
+}
+
+/* Трек-лист */
+.track-deck {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.track-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all 0.25s ease;
+}
+
+.track-num {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ff758c;
+  opacity: 0.8;
+}
+
+.track-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.track-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.track-artist {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.genre-pill {
+  font-size: 0.68rem;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.track-card:hover {
+  background: rgba(255, 117, 140, 0.08);
+  border-color: rgba(255, 117, 140, 0.3);
+  transform: translateX(4px);
+}
+
+/* Фандомы & Кинны */
+.tags-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.fandom-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.tag-icon {
+  color: #ff758c;
+  font-size: 0.78rem;
+}
+
+.fandom-tag:hover {
+  background: rgba(255, 117, 140, 0.15);
+  border-color: #ff758c;
+  transform: translateY(-2px);
+}
+
+.kinn-deck {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.kinn-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 12px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.kinn-fandom {
+  font-size: 0.84rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.kinn-chars {
+  display: flex;
+  gap: 6px;
+}
+
+.char-badge {
+  font-size: 0.74rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(255, 117, 140, 0.12);
+  color: #ffb7c5;
+  border: 1px solid rgba(255, 117, 140, 0.25);
+  font-weight: 600;
+}
